@@ -72,13 +72,6 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
-    
-#CAMERA
-PRODUCT_PACKAGES += \
-    libmmcamera_interface \
-    libmmjpeg_interface \
-    libqomx_core \
-    camera.msm8974
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
