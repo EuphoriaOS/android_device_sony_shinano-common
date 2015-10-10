@@ -40,6 +40,8 @@ PRODUCT_COPY_FILES += \
 # Init
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
+    $(COMMON_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
+    $(COMMON_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab \
     $(COMMON_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
     $(COMMON_PATH)/rootdir/init.qcom.power.rc:root/init.qcom.power.rc \
     $(COMMON_PATH)/rootdir/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
@@ -70,6 +72,13 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+    
+#CAMERA
+PRODUCT_PACKAGES += \
+    libmmcamera_interface \
+    libmmjpeg_interface \
+    libqomx_core \
+    camera.msm8974
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -174,6 +183,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # HDMI
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.demo.hdmirotationlock=false
+    
+# VM Config
+PRODUCT_PROPERTY_OVERRIDES += \
+	dalvik.vm.checkjni=false \
+	dalvik.vm.dex2oat-filter=everything \
+	dalvik.vm.dex2oat-flags=--no-watch-dog \
+	dalvik.vm.image-dex2oat-filter=everything \
+	dalvik.vm.isa.arm.features=lpae,div \
+	ro.kernel.android.checkjni=0
 
 # Time
 PRODUCT_PROPERTY_OVERRIDES += \
